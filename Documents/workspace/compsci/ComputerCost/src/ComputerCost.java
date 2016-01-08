@@ -51,77 +51,110 @@ public class electricityUse {
 		
 		 HashMap hm = new HashMap();
 	      // Put elements to the map
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
-	      hm.put("Alabama", new Double(3434.34));
-	      hm.put("Mahnaz", new Double(123.22));
-	      hm.put("Ayan", new Double(1378.00));
-	      hm.put("Daisy", new Double(99.22));
-	      hm.put("Qadir", new Double(-19.08));
+		  hm.put("Idaho", new Double(8.0));
+		  hm.put("North Dakota", new Double(8.1));
+		  hm.put("Washington", new Double(8.2));
+	      hm.put("Arkansas", new Double(8.7));
+	      hm.put("Utah", new Double(8.8));
+	      hm.put("Louisiana", new Double(8.9));
+	      hm.put("Wyoming", new Double(8.9));
+	      hm.put("South Dakota", new Double(9.0));
+	      hm.put("Nebraska", new Double(9.0));
+	      hm.put("Kentucky", new Double(9.0));
+	      hm.put("West Virginia", new Double(9.2));
+	      hm.put("Oklahoma", new Double(9.2));
+	      hm.put("Oregon", new Double(9.4));
+	      hm.put("Montana", new Double(9.6));
+	      hm.put("Missouri", new Double(9.7));
+	      hm.put("Tennessee", new Double(9.8));
+	      hm.put("Indiana", new Double(10.0));
+	      hm.put("North Carolina", new Double(10.2));
+	      hm.put("Mississippi", new Double(10.3));
+	      hm.put("Iowa", new Double(10.5));
+	      hm.put("Kansas", new Double(10.5));
+	      hm.put("Virginia", new Double(10.5));
+	      hm.put("New Mexico", new Double(10.7));
+	      hm.put("Minnesota", new Double(10.9));
+	      hm.put("South Carolina", new Double(11.0));
+	      hm.put("Arizona", new Double(11.1));
+	      hm.put("Georgia", new Double(11.1));
+	      hm.put("Alabama", new Double(11.1));
+	      hm.put("Colorado", new Double(11.2));
+	      hm.put("Ohio", new Double(11.2));
+	      hm.put("Texas", new Double(11.3));
+	      hm.put("Illinois", new Double(11.7));
+	      hm.put("Florida", new Double(11.7));
+	      hm.put("Nevada", new Double(11.7));
+	      hm.put("Michigan", new Double(13.0));
+	      hm.put("Wisconsin", new Double(13.0));
+	      hm.put("Pennsylvania", new Double(13.2));
+	      hm.put("Maryland", new Double(13.7));
+	      hm.put("DC", new Double(13.7));
+	      hm.put("Deleware", new Double(13.7));
+	      hm.put("Massachussetts", new Double(14.8));
+	      hm.put("Rhode Island", new Double(14.9));
+	      hm.put("California", new Double(15.2));
+	      hm.put("Maine", new Double(15.5));
+	      hm.put("Vermont", new Double(16.1));
+	      hm.put("New Jersey", new Double(16.3));
+	      hm.put("New Hampshire", new Double(16.5));
+	      hm.put("Alaska", new Double(17.5));
+	      hm.put("Connecticut", new Double(18.1));
+	      hm.put("New York", new Double(18.1));
+	      hm.put("Hawaii", new Double(33.2));
+	      
+	      
+	      hm.put("15" , new Double(15.0));
+	      hm.put("17" , new Double(18.0));
+	      hm.put("19" , new Double(20.0));
+	      hm.put("20" , new Double(24.0));
+	      hm.put("21" , new Double(26.0));
+	      hm.put("22" , new Double(30.0));
+	      hm.put("24" , new Double(40.0));
+	      hm.put("30" , new Double(50.0));
+	      hm.put("32" , new Double(55.0));
+	      hm.put("37" , new Double(60.0));
+	      hm.put("42" , new Double(80.0));
+	      hm.put("50" , new Double(100.0));
+	      
+
 	      
 		int computerPrice = Integer.parseInt(JOptionPane.showInputDialog( null, "What is your computer Price: " ));
 		JOptionPane.showMessageDialog(null, "Your computer Price is: " + computerPrice);
 		
 		//String dl = JOptionPane.showInputDialog(null, "Do you own a desktop or laptop?");
 		//JOptionPane.showMessageDialog(null);
-		int alaskaAlabamaArkansas = 8;
 		//System.out.println("Desktop or Laptop?");
 		//String desktopOrLaptop;
 		//desktopOrLaptop = user_input.next();
 		
 		
-		//String state = JOptionPane.showInputDialog(null, "What state do you live in?");
-		//if (state.contains("Alabama")) {
-			//String state = Integer.toString(alaskaAlabamaArkansas);
-		//}
+		String state = JOptionPane.showInputDialog(null, "What state do you live in?");
+			Double elecRate = ((Double) hm.get(state)).doubleValue();
+			
+			JOptionPane.showMessageDialog(null, "Your elecricity rate is: " + hm.get(state));
 		
 		
 		
 		int hoursPerDay = Integer.parseInt(JOptionPane.showInputDialog(null, "How many hours do you spend on your computer per day? "));
+		int yearsKeepingComputer = Integer.parseInt(JOptionPane.showInputDialog(null, "How many years do you plan to keep the computer? "));
+
+		if(yearsKeepingComputer < 31533600){
+			int timeSpentonComputer = hoursPerDay * 8760 * yearsKeepingComputer;
+			JOptionPane.showMessageDialog(null, "You are spending " + timeSpentonComputer + "hours on your computer in total");
+		}
+		else System.out.println("Too much time on computer");
+		
 		int screenSize = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your screen"));
+		
+		if (screenSize == 15){
+			JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of pwower");
+		}
+					
+		
+		
+		
+		
 		int typeOfCPU = Integer.parseInt(JOptionPane.showInputDialog(null, "What type of CPU do you have? "));
 		int sizeOfRAM = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your RAM"));
 		String typeOfFan = JOptionPane.showInputDialog(null, "What type of fan do you have? ");
@@ -129,7 +162,9 @@ public class electricityUse {
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
 		int volts = 0;
 		int amps = 0;
-		int electricityCost;
+		
+		
+		Double electricityCost;
 		
 		int batteryCost = volts * amps;
 		
