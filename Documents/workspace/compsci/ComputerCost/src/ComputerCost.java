@@ -3,9 +3,6 @@ import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import java.util.Scanner;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class ComputerCost
 {
@@ -28,7 +25,9 @@ public class ComputerCost
 	}
 
 }
-
+import java.util.HashMap;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 public class electricityUse {
 
 	public static void main(String[] args) {
