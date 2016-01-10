@@ -89,6 +89,50 @@ public class Cost {
 	      hm.put("42" , new Double(80.0));
 	      hm.put("50" , new Double(100.0));
 	      
+		     HashMap screensizeDictionary = new HashMap();
+		      screensizeDictionary.put("15" , new Double(15.0));
+		      screensizeDictionary.put("17" , new Double(18.0));
+		      screensizeDictionary.put("19" , new Double(20.0));
+		      screensizeDictionary.put("20" , new Double(24.0));
+		      screensizeDictionary.put("21" , new Double(26.0));
+		      screensizeDictionary.put("22" , new Double(30.0));
+		      screensizeDictionary.put("24" , new Double(40.0));
+		      screensizeDictionary.put("30" , new Double(50.0));
+		      screensizeDictionary.put("32" , new Double(55.0));
+		      screensizeDictionary.put("37" , new Double(60.0));
+		      screensizeDictionary.put("42" , new Double(80.0));
+		      screensizeDictionary.put("50" , new Double(100.0));
+		      
+		      HashMap cpuDictionary = new HashMap();
+		      cpuDictionary.put("Core i3" , new Double(64.0));
+		      cpuDictionary.put("Core i5" , new Double(79.0));
+		      cpuDictionary.put("Core i7" , new Double(86.0));
+		      cpuDictionary.put("Core i7-E" , new Double(140.0));
+		      cpuDictionary.put("AMD Low End CPU 2 cores" , new Double(80.0));
+		      cpuDictionary.put("AMD Mid End CPU 4 cores" , new Double(95.0));
+		      cpuDictionary.put("AMD High End CPU 8 cores" , new Double(110.0));
+		      
+		      HashMap ramDictionary = new HashMap();
+		      ramDictionary.put("DDR1 RAM" , new Double(4.75));
+		      ramDictionary.put("DDR2 RAM" , new Double(3.75));
+		      ramDictionary.put("DDR3 RAM" , new Double(2.5));
+		      
+		      HashMap fanDictionary = new HashMap();
+		      fanDictionary.put("80 mm Case Fan (2,000 RPM)", new Double(1.2));
+		      fanDictionary.put("80 mm Case Fan (3,000 RPM)", new Double(2.7));
+		      fanDictionary.put("120 mm Case Fan (1,200 RPM)", new Double(1.45));
+		      fanDictionary.put("120 mm Case Fan (2,000 RPM)", new Double(4.8));
+		      fanDictionary.put("140 mm Case Fan (1,000 RPM)", new Double(1.4));
+		      fanDictionary.put("140 mm Case Fan (2,000 RPM)", new Double(5.1));
+		      
+		      HashMap dvdplayerDictionary = new HashMap();
+		      dvdplayerDictionary.put("SATA DVD Drive", new Double(21.0));
+		      dvdplayerDictionary.put("SATA Blu-ray Drive", new Double(27.5));
+		      
+		      HashMap batteryDictionary = new HashMap();
+		      
+		      HashMap videocardDictionary = new HashMap();
+	      
 	      // 
 			String state = JOptionPane.showInputDialog(null, "What state do you live in?");
 			Double elecRate = ((Double) hm.get(state)).doubleValue();
@@ -187,19 +231,42 @@ public class Cost {
 	    		  wattHours = wattHours + 86;
 	    	  }
 	      }
-	      
-	      
+	      	Object[] ramType = {"n DDR3 RAM","n DDR2","n DDR1 RAM"};
+	      	
+	      	int whichRAM = JOptionPane.showOptionDialog(
+	      			   null                       // Center in window.
+	                  , "Which model of Intel CPU do you have?"        // Message
+	                  , ""               // Title in titlebar
+	                  , JOptionPane.YES_NO_OPTION  // Option type
+	                  , JOptionPane.PLAIN_MESSAGE  // messageType
+	                  , null                       // Icon (none)
+	                  , ramType                 // Button text as above.
+	                  , "Cancel"    // Default button's label
+	                  );
+	      	if(whichRAM == JOptionPane.YES_OPTION){
+	      		String sizeOfRAM = "DDR3 RAM";
+	      		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
+	      	}
+	      	if(whichRAM == JOptionPane.NO_OPTION){
+	      		String sizeOfRAM = "DDR2 RAM";
+	      		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
+	      	}
+	      	if(whichRAM == JOptionPane.CANCEL_OPTION){
+	      		String sizeOfRAM = "DDR1 RAM";
+	      		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
+	      	}
+	      	
+	      	
 	    		  			
 		String typeOfFan = JOptionPane.showInputDialog(null, "What type of fan do you have? ");
 		String dvdPlayer = JOptionPane.showInputDialog(null, "What type of DVD player do you have? ");  
-	
-		int sizeOfRAM = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your RAM"));
+		
+		
+
 
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
 		int volts = 0;
 		int amps = 0;
-		
-		
 		
 		
 		int batteryCost = volts * amps;
