@@ -1,0 +1,158 @@
+import java.util.HashMap;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+public class electricityUse {
+
+	public static void main(String[] args) {
+		
+		 HashMap stateDictionary = new HashMap();
+	      // Put elements to the map
+		 stateDictionary.put("Idaho", new Double(8.0));
+		 stateDictionary.put("North Dakota", new Double(8.1));
+		 stateDictionary.put("Washington", new Double(8.2));
+		 stateDictionary.put("Arkansas", new Double(8.7));
+		 stateDictionary.put("Utah", new Double(8.8));
+		 stateDictionary.put("Louisiana", new Double(8.9));
+		 stateDictionary.put("Wyoming", new Double(8.9));
+		 stateDictionary.put("South Dakota", new Double(9.0));
+		 stateDictionary.put("Nebraska", new Double(9.0));
+		 stateDictionary.put("Kentucky", new Double(9.0));
+		 stateDictionary.put("West Virginia", new Double(9.2));
+		 stateDictionary.put("Oklahoma", new Double(9.2));
+		 stateDictionary.put("Oregon", new Double(9.4));
+		 stateDictionary.put("Montana", new Double(9.6));
+		 stateDictionary.put("Missouri", new Double(9.7));
+		 stateDictionary.put("Tennessee", new Double(9.8));
+		 stateDictionary.put("Indiana", new Double(10.0));
+		 stateDictionary.put("North Carolina", new Double(10.2));
+		 stateDictionary.put("Mississippi", new Double(10.3));
+		 stateDictionary.put("Iowa", new Double(10.5));
+		 stateDictionary.put("Kansas", new Double(10.5));
+		 stateDictionary.put("Virginia", new Double(10.5));
+		 stateDictionary.put("New Mexico", new Double(10.7));
+		 stateDictionary.put("Minnesota", new Double(10.9));
+		 stateDictionary.put("South Carolina", new Double(11.0));
+		 stateDictionary.put("Arizona", new Double(11.1));
+		 stateDictionary.put("Georgia", new Double(11.1));
+		 stateDictionary.put("Alabama", new Double(11.1));
+		 stateDictionary.put("Colorado", new Double(11.2));
+		 stateDictionary.put("Ohio", new Double(11.2));
+		 stateDictionary.put("Texas", new Double(11.3));
+		 stateDictionary.put("Illinois", new Double(11.7));
+		 stateDictionary.put("Florida", new Double(11.7));
+		 stateDictionary.put("Nevada", new Double(11.7));
+		 stateDictionary.put("Michigan", new Double(13.0));
+		 stateDictionary.put("Wisconsin", new Double(13.0));
+		 stateDictionary.put("Pennsylvania", new Double(13.2));
+		 stateDictionary.put("Maryland", new Double(13.7));
+		 stateDictionary.put("DC", new Double(13.7));
+		 stateDictionary.put("Deleware", new Double(13.7));
+		 stateDictionary.put("Massachussetts", new Double(14.8));
+		 stateDictionary.put("Rhode Island", new Double(14.9));
+		 stateDictionary.put("California", new Double(15.2));
+		 stateDictionary.put("Maine", new Double(15.5));
+		 stateDictionary.put("Vermont", new Double(16.1));
+		 stateDictionary.put("New Jersey", new Double(16.3));
+		 stateDictionary.put("New Hampshire", new Double(16.5));
+		 stateDictionary.put("Alaska", new Double(17.5));
+		 stateDictionary.put("Connecticut", new Double(18.1));
+		 stateDictionary.put("New York", new Double(18.1));
+		 stateDictionary.put("Hawaii", new Double(33.2));
+	      
+	     HashMap screensizeDictionary = new HashMap();
+	      screensizeDictionary.put("15" , new Double(15.0));
+	      screensizeDictionary.put("17" , new Double(18.0));
+	      screensizeDictionary.put("19" , new Double(20.0));
+	      screensizeDictionary.put("20" , new Double(24.0));
+	      screensizeDictionary.put("21" , new Double(26.0));
+	      screensizeDictionary.put("22" , new Double(30.0));
+	      screensizeDictionary.put("24" , new Double(40.0));
+	      screensizeDictionary.put("30" , new Double(50.0));
+	      screensizeDictionary.put("32" , new Double(55.0));
+	      screensizeDictionary.put("37" , new Double(60.0));
+	      screensizeDictionary.put("42" , new Double(80.0));
+	      screensizeDictionary.put("50" , new Double(100.0));
+	      
+	      HashMap cpuDictionary = new HashMap();
+	      cpuDictionary.put("Core i3" , new Double(64.0));
+	      cpuDictionary.put("Core i5" , new Double(79.0));
+	      cpuDictionary.put("Core i7" , new Double(86.0));
+	      cpuDictionary.put("Core i7-E" , new Double(140.0));
+	      cpuDictionary.put("AMD Low End CPU 2 cores" , new Double(80.0));
+	      cpuDictionary.put("AMD Mid End CPU 4 cores" , new Double(95.0));
+	      cpuDictionary.put("AMD High End CPU 8 cores" , new Double(110.0));
+	      
+	      HashMap ramDictionary = new HashMap();
+	      ramDictionary.put("DDR1 RAM" , new Double(4.75));
+	      ramDictionary.put("DDR2 RAM" , new Double(3.75));
+	      ramDictionary.put("DDR3 RAM" , new Double(2.5));
+	      
+	      HashMap fanDictionary = new HashMap();
+	      fanDictionary.put("80 mm Case Fan (2,000 RPM)", new Double(1.2));
+	      fanDictionary.put("80 mm Case Fan (3,000 RPM)", new Double(2.7));
+	      fanDictionary.put("120 mm Case Fan (1,200 RPM)", new Double(1.45));
+	      fanDictionary.put("120 mm Case Fan (2,000 RPM)", new Double(4.8));
+	      fanDictionary.put("140 mm Case Fan (1,000 RPM)", new Double(1.4));
+	      fanDictionary.put("140 mm Case Fan (2,000 RPM)", new Double(5.1));
+	      
+	      HashMap dvdplayerDictionary = new HashMap();
+	      dvdplayerDictionary.put("SATA DVD Drive", new Double(21.0));
+	      dvdplayerDictionary.put("SATA Blu-ray Drive", new Double(27.5));
+	      
+	      HashMap batteryDictionary = new HashMap();
+	      
+	      HashMap videocardDictionary = new HashMap();
+
+	      
+		int computerPrice = Integer.parseInt(JOptionPane.showInputDialog( null, "What is your computer Price: " ));
+		JOptionPane.showMessageDialog(null, "Your computer Price is: " + computerPrice);
+		
+		String state = JOptionPane.showInputDialog(null, "What state do you live in?");
+			Double elecRate = ((Double) stateDictionary.get(state)).doubleValue();
+			
+			JOptionPane.showMessageDialog(null, "Your elecricity rate is: " + elecRate);
+		
+		Double hoursPerDay = Double.parseDouble(JOptionPane.showInputDialog(null, "How many hours do you spend on your computer per day? "));
+		Double yearsKeepingComputer = Double.parseDouble(JOptionPane.showInputDialog(null, "How many years do you plan to keep the computer? "));
+
+		Double timeSpentonComputer = hoursPerDay * 8760 * yearsKeepingComputer;
+		
+		if(yearsKeepingComputer < 31533600){
+			JOptionPane.showMessageDialog(null, "You are spending " + timeSpentonComputer + "hours on your computer in total");
+		}
+		else JOptionPane.showMessageDialog(null, "Too much time on computer");
+		
+		int screenSize = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your screen"));
+			Double screenRate = ((Double) screensizeDictionary.get(screenSize));
+		
+		if (screenSize <=50){
+			JOptionPane.showMessageDialog(null, "Your screen uses " + screenRate + " watts of power");
+		}
+		else JOptionPane.showMessageDialog(null, "Cannot compute Power Usage");
+					
+		Double typeOfCPU = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter which CPU you have: \n Core i3 \n Core i5 \n Core i7 \n Core i7-E \n AMD Low End CPU 2 cores \n AMD Mid End CPU 4 cores \n AMD High End CPU 8 cores \n"));
+		Double sizeOfRAM = Double.parseDouble(JOptionPane.showInputDialog(null, "Choose your RAM: \n DDR1 RAM \n DDR2 RAM  \n DDR3 RAM"));
+		String typeOfFan = JOptionPane.showInputDialog(null, "Choose your fan: \n 80 mm Case Fan (2,000 RPM) \n 80 mm Case Fan (3,000 RPM) \n 120 mm Case Fan (1,200 RPM) \n 120 mm Case Fan (2,000 RPM) \n 140 mm Case Fan (1,000 RPM) \n 140 mm Case Fan (2,000 RPM) \n");
+		String dvdPlayer = JOptionPane.showInputDialog(null, "Choose your DVD player: \n SATA DVD Drive \n SATA Blu-ray Drive \n");
+		
+		
+		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
+		
+		Double electricityCost = timeSpentonComputer * (typeOfCPU + sizeOfRAM + Double.parseDouble(typeOfFan) + Double.parseDouble(dvdPlayer));
+		
+		JOptionPane.showMessageDialog(null, "Total Computer Cost: " + computerPrice + "\n Total Electricity Cost: ");
+		
+		//add batteryCost code here
+		//String dl = JOptionPane.showInputDialog(null, "Do you own a desktop or laptop?");
+				//JOptionPane.showMessageDialog(null);
+				//System.out.println("Desktop or Laptop?");
+				//String desktopOrLaptop;
+				//desktopOrLaptop = user_input.next();
+		//System.out.println("What type of battery do you have?");
+				//int batteryType;
+				//int volts = 0;
+				//int amps = 0;
+				//int batteryLength = volts * amps;
+	}
+
+}
