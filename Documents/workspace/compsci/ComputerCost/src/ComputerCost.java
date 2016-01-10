@@ -117,7 +117,12 @@ public class Cost {
 		      HashMap batteryDictionary = new HashMap();
 		      
 		      HashMap videocardDictionary = new HashMap();
-	      
+		      videocardDictionary.put("LPD Low", new Double(55.5));
+		      videocardDictionary.put("LPD Mid", new Double(137.0));
+		      videocardDictionary.put("LPD High", new Double(256.0));
+		      videocardDictionary.put("IPD Low", new Double(7.5));
+		      videocardDictionary.put("IPD Mid", new Double(11.5));
+		      videocardDictionary.put("IPD High", new Double(32.5));
 	      // 
 			String state = JOptionPane.showInputDialog(null, "What state do you live in?");
 			Double elecRate = ((Double) hm.get(state)).doubleValue();
@@ -269,7 +274,6 @@ public class Cost {
 	      		wattHours = wattHours + ramRate;
 	      	}
 	      	
-	      	
 	    Object[] players = {"I don't have one", "DVD Drive", "Blu Ray Drive"};
 	   	
 	    int whichPlayer = JOptionPane.showOptionDialog(
@@ -298,8 +302,77 @@ public class Cost {
    		Double dvdRate = ((Double) dvdplayerDictionary.get(drive)).doubleValue();
    		wattHours = wattHours + dvdRate;
    	}
+   	Object[] draw = {"Load Power Draw","Idle Power Draw"};
+    Object[] load =  {"High End","Mid End","Low End"};
+    Object[] idle = { "High End", "Mid End", "Low End"};
+    int whichDraw =JOptionPane.showOptionDialog(
+             null                       // Center in window.
+            , "What type of power draw does your graphics card have?"        // Message
+            , ""               // Title in titlebar
+            , JOptionPane.YES_NO_OPTION  // Option type
+            , JOptionPane.PLAIN_MESSAGE  // messageType
+            , null                       // Icon (none)
+            , draw                  // Button text as above.
+            , "Cancel"    // Default button's label
+          );
+    if(whichDraw == JOptionPane.YES_OPTION){
+  	  int whichLoad =JOptionPane.showOptionDialog(
+	               null                       // Center in window.
+                , "Which model of AMD CPU do you have?"        // Message
+                , ""               // Title in titlebar
+                , JOptionPane.YES_NO_OPTION  // Option type
+                , JOptionPane.PLAIN_MESSAGE  // messageType
+                , null                       // Icon (none)
+                , load                // Button text as above.
+                , "Cancel"    // Default button's label
+                );
+  	  if(whichLoad == JOptionPane.NO_OPTION){
+     		String card  = "LPD Low";
+       		Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
+       		wattHours = wattHours + cardRate;
+  	  }
+  	  if(whichLoad == JOptionPane.YES_OPTION){
+  		String card  = "LPD Mid";
+   		Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
+   		wattHours = wattHours + cardRate;
+  	  }
+  	  if(whichLoad ==JOptionPane.CANCEL_OPTION){
+  		String card  = "LPD High";
+   		Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
+   		wattHours = wattHours + cardRate;
+  	}
+   if(whichDraw == JOptionPane.NO_OPTION){
+  	  int whichIdle =JOptionPane.showOptionDialog(
+	               null                       // Center in window.
+                , "Which model of Intel CPU do you have?"        // Message
+                , ""               // Title in titlebar
+                , JOptionPane.YES_NO_OPTION  // Option type
+                , JOptionPane.PLAIN_MESSAGE  // messageType
+                , null                       // Icon (none)
+                , idle                  // Button text as above.
+                , "Cancel"    // Default button's label
+                );
+  	  if(whichIdle == JOptionPane.NO_OPTION){
+    		String card  = "IPD Low";
+       		Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
+       		wattHours = wattHours + cardRate;
+  	  }
+  	  if(whichIdle == JOptionPane.YES_OPTION){
+    		String card  = "IPD Mid";
+       		Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
+       		wattHours = wattHours + cardRate;
+  	  }
+  	  if(whichIdle ==JOptionPane.CANCEL_OPTION){
+    		String card  = "IPD High";
+       		Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
+       		wattHours = wattHours + cardRate;
+  	  }
+    }
 	    
-		
+   	Double elecCost = totalHours * (wattHours) * (elecRate);
+	JOptionPane.showMessageDialog(null, "Computer Cost:" + computerPrice);	
+   	JOptionPane.showMessageDialog(null, "Electricity Cost:" + elecCost);	
+   	
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
 		int volts = 0;
 		int amps = 0;
@@ -314,4 +387,4 @@ public class Cost {
 	}
 
 }
-}
+}}
