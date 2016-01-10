@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Cost
+public class ComputerCost
 {
 
 	public static void main(String[] args)
