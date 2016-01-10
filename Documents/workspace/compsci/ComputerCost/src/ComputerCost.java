@@ -90,18 +90,9 @@ public class Cost {
 	      hm.put("50" , new Double(100.0));
 	      
 		     HashMap screensizeDictionary = new HashMap();
-		      screensizeDictionary.put("15" , new Double(15.0));
 		      screensizeDictionary.put("17" , new Double(18.0));
-		      screensizeDictionary.put("19" , new Double(20.0));
-		      screensizeDictionary.put("20" , new Double(24.0));
-		      screensizeDictionary.put("21" , new Double(26.0));
-		      screensizeDictionary.put("22" , new Double(30.0));
-		      screensizeDictionary.put("24" , new Double(40.0));
-		      screensizeDictionary.put("30" , new Double(50.0));
-		      screensizeDictionary.put("32" , new Double(55.0));
-		      screensizeDictionary.put("37" , new Double(60.0));
-		      screensizeDictionary.put("42" , new Double(80.0));
-		      screensizeDictionary.put("50" , new Double(100.0));
+		      screensizeDictionary.put("30" , new Double(40.0));
+		      screensizeDictionary.put("50" , new Double(80.0));
 		      
 		      HashMap cpuDictionary = new HashMap();
 		      cpuDictionary.put("Core i3" , new Double(64.0));
@@ -170,12 +161,33 @@ public class Cost {
 			 if(dl == JOptionPane.NO_OPTION){
 				 wattHours = wattHours + 500;
 			 }
-			 
-			 int screenSize = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your screen"));
+		   Object[] screens = {"<= 50 inches","<= 30 inches"," <= 17 inches" };
+		   int whichScreen =JOptionPane.showOptionDialog(
+	               null                       // Center in window.
+                  , "What is the size of your screen"        // Message
+                  , ""               // Title in titlebar
+                  , JOptionPane.YES_NO_OPTION  // Option type
+                  , JOptionPane.PLAIN_MESSAGE  // messageType
+                  , null                       // Icon (none)
+                  , screens                  // Button text as above.
+                  , "Cancel"    // Default button's label
+                );
+		   if (whichScreen == JOptionPane.YES_OPTION){
+			   String screennum= "50";
+	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
+	      		JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of power");
+		   }
+		   if (whichScreen == JOptionPane.NO_OPTION){
+			   String screennum = "30";
+	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
+	      		JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of power");
+		   }
+		   if (whichScreen == JOptionPane.CANCEL_OPTION){
+			   String screennum = "17";
+	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
+	      		JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of power");
+		   }
 				
-				if (screenSize == 15){
-					JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of pwower");
-				}
 	      
 	      Object[] brands = {"AMD","Intel"};
 	      Object[] intel =  {"Core i7","Core i5","Core i3"};
