@@ -18,7 +18,7 @@ public class Cost {
 		//int batteryLength = volts * amps;
 		
 		Double electricityCost;
-		int wattHours = 0;
+		double wattHours = 0;
 		int totalHours = 0;
 		
 		 HashMap hm = new HashMap();
@@ -108,15 +108,9 @@ public class Cost {
 		      ramDictionary.put("DDR2 RAM" , new Double(3.75));
 		      ramDictionary.put("DDR3 RAM" , new Double(2.5));
 		      
-		      HashMap fanDictionary = new HashMap();
-		      fanDictionary.put("80 mm Case Fan (2,000 RPM)", new Double(1.2));
-		      fanDictionary.put("80 mm Case Fan (3,000 RPM)", new Double(2.7));
-		      fanDictionary.put("120 mm Case Fan (1,200 RPM)", new Double(1.45));
-		      fanDictionary.put("120 mm Case Fan (2,000 RPM)", new Double(4.8));
-		      fanDictionary.put("140 mm Case Fan (1,000 RPM)", new Double(1.4));
-		      fanDictionary.put("140 mm Case Fan (2,000 RPM)", new Double(5.1));
 		      
 		      HashMap dvdplayerDictionary = new HashMap();
+		      dvdplayerDictionary.put("none",new Double(0.0));
 		      dvdplayerDictionary.put("SATA DVD Drive", new Double(21.0));
 		      dvdplayerDictionary.put("SATA Blu-ray Drive", new Double(27.5));
 		      
@@ -137,7 +131,8 @@ public class Cost {
 
 			if(yearsKeepingComputer < 20){
 				totalHours = hoursDay * 8760 * yearsKeepingComputer;
-				JOptionPane.showMessageDialog(null, "You are spending " + totalHours + "hours on your computer in total");
+				
+				JOptionPane.showMessageDialog(null, "You are going to spend " + totalHours + "hours on your computer in total");
 			}
 			else System.out.println("Too much time on computer");
 	      
@@ -175,16 +170,19 @@ public class Cost {
 		   if (whichScreen == JOptionPane.YES_OPTION){
 			   String screennum= "50";
 	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
+	      		wattHours = wattHours + screenSize;
 	      		JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of power");
 		   }
 		   if (whichScreen == JOptionPane.NO_OPTION){
 			   String screennum = "30";
 	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
+	      		wattHours = wattHours + screenSize;
 	      		JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of power");
 		   }
 		   if (whichScreen == JOptionPane.CANCEL_OPTION){
 			   String screennum = "17";
 	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
+	      		wattHours = wattHours + screenSize;
 	      		JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of power");
 		   }
 				
@@ -258,24 +256,50 @@ public class Cost {
 	      	if(whichRAM == JOptionPane.YES_OPTION){
 	      		String sizeOfRAM = "DDR3 RAM";
 	      		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
+	      		wattHours = wattHours + ramRate;
 	      	}
 	      	if(whichRAM == JOptionPane.NO_OPTION){
 	      		String sizeOfRAM = "DDR2 RAM";
 	      		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
+	      		wattHours = wattHours + ramRate;
 	      	}
 	      	if(whichRAM == JOptionPane.CANCEL_OPTION){
 	      		String sizeOfRAM = "DDR1 RAM";
 	      		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
+	      		wattHours = wattHours + ramRate;
 	      	}
 	      	
 	      	
-	    		  			
-		String typeOfFan = JOptionPane.showInputDialog(null, "What type of fan do you have? ");
-		String dvdPlayer = JOptionPane.showInputDialog(null, "What type of DVD player do you have? ");  
+	    Object[] players = {"I don't have one", "DVD Drive", "Blu Ray Drive"};
+	   	
+	    int whichPlayer = JOptionPane.showOptionDialog(
+   			   null                       // Center in window.
+               , "What type of DVD player do you have? "       // Message
+               , ""               // Title in titlebar
+               , JOptionPane.YES_NO_OPTION  // Option type
+               , JOptionPane.PLAIN_MESSAGE  // messageType
+               , null                       // Icon (none)
+               , players                 // Button text as above.
+               , "Cancel"    // Default button's label
+               );
+	    
+   	if(whichPlayer == JOptionPane.YES_OPTION){
+   		String drive  = "none";
+   		Double dvdRate = ((Double) dvdplayerDictionary.get(drive)).doubleValue();
+   		wattHours = wattHours + dvdRate;
+   	}
+   	if(whichPlayer == JOptionPane.NO_OPTION){
+   		String drive  = "SATA DVD Drive";
+   		Double dvdRate = ((Double) dvdplayerDictionary.get(drive)).doubleValue();
+   		wattHours = wattHours + dvdRate;
+   	}
+   	if(whichPlayer == JOptionPane.CANCEL_OPTION){
+   		String drive = "SATA Blu-ray Drive";
+   		Double dvdRate = ((Double) dvdplayerDictionary.get(drive)).doubleValue();
+   		wattHours = wattHours + dvdRate;
+   	}
+	    
 		
-		
-
-
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
 		int volts = 0;
 		int amps = 0;
