@@ -123,13 +123,13 @@ public class electricityUse {
 		else JOptionPane.showMessageDialog(null, "Too much time on computer");
 		
 		int screenSize = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your screen"));
-			Double screenRate = ((Double) screensizeDictionary.get(screenSize));
+			Double screenRate = ((Double) screensizeDictionary.get(screenSize)).doubleValue();
 		
 		if (screenSize <=50){
 			JOptionPane.showMessageDialog(null, "Your screen uses " + screenRate + " watts of power");
 		}
 		else JOptionPane.showMessageDialog(null, "Cannot compute Power Usage");
-					
+			
 		Double typeOfCPU = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter which CPU you have: \n Core i3 \n Core i5 \n Core i7 \n Core i7-E \n AMD Low End CPU 2 cores \n AMD Mid End CPU 4 cores \n AMD High End CPU 8 cores \n"));
 		Double cpuRate = ((Double) cpuDictionary.get(typeOfCPU)).doubleValue();
 		Double sizeOfRAM = Double.parseDouble(JOptionPane.showInputDialog(null, "Choose your RAM: \n DDR1 RAM \n DDR2 RAM  \n DDR3 RAM"));
