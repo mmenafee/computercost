@@ -1,30 +1,3 @@
-import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JComboBox;
-import java.util.Scanner;
-import java.util.Arrays;
-
-public class ComputerCost
-{
-
-	public static void main(String[] args)
-	{
-		// TODO Auto-generated method stub
-		String cpu;
-		String [] cpubrands = {"Intel", "AMD"};
-		Scanner scan = new Scanner(System.in);
-		
-		System.out.println(Arrays.toString(cpubrands));
-		System.out.println("Type one of these brands:");
-		cpu =scan.nextLine();
-		
-		if(cpu == "Intel"){
-			 String[] models = { "Core i3", "Core i5","Core i7" };
-				JComboBox cpuModels = new JComboBox(models);
-		}
-	}
-
-}
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -47,6 +20,8 @@ public class Cost {
 		//int volts = 0;
 		//int amps = 0;
 		//int batteryLength = volts * amps;
+		
+		int wattHours = 0;
 		
 		 HashMap hm = new HashMap();
 	      // Put elements to the map
@@ -116,8 +91,9 @@ public class Cost {
 	      hm.put("42" , new Double(80.0));
 	      hm.put("50" , new Double(100.0));
 	      
-	      Object[] brands = {"Intel","AMD"};
-	      Object[] intel =  {"Core i3","Core i5","Core i7"};
+	      Object[] brands = {"AMD","Intel"};
+	      Object[] intel =  {"Core i7","Core i5","Core i3"};
+	      Object[] amd = { "High End(8 cores)", "Mid End(4 Cores)", "Low End(2 Cores)"};
 	      int brandOfCPU =JOptionPane.showOptionDialog(
 	               null                       // Center in window.
                   , "What is the brand of your CPU?"        // Message
@@ -131,17 +107,25 @@ public class Cost {
 	      if(brandOfCPU == JOptionPane.YES_OPTION){
 	    	  int cores =JOptionPane.showOptionDialog(
 		               null                       // Center in window.
-	                  , "Which model of Intel CPU do you have?"        // Message
+	                  , "Which model of AMD CPU do you have?"        // Message
 	                  , ""               // Title in titlebar
 	                  , JOptionPane.YES_NO_OPTION  // Option type
 	                  , JOptionPane.PLAIN_MESSAGE  // messageType
 	                  , null                       // Icon (none)
-	                  , intel                  // Button text as above.
+	                  , amd                  // Button text as above.
 	                  , "Cancel"    // Default button's label
 	                  );
+	    	  if(cores == JOptionPane.NO_OPTION){
+	    		  wattHours = wattHours + 80;
+	    	  }
+	    	  if(cores == JOptionPane.YES_OPTION){
+	    		  wattHours = wattHours + 95;
+	    	  }
+	    	  if(cores ==JOptionPane.CANCEL_OPTION){
+	    		  wattHours = wattHours + 110;
 	    	}
 	      if(brandOfCPU == JOptionPane.NO_OPTION){
-	    	  int cores =JOptionPane.showOptionDialog(
+	    	  int cored =JOptionPane.showOptionDialog(
 		               null                       // Center in window.
 	                  , "Which model of Intel CPU do you have?"        // Message
 	                  , ""               // Title in titlebar
@@ -151,7 +135,17 @@ public class Cost {
 	                  , intel                  // Button text as above.
 	                  , "Cancel"    // Default button's label
 	                  );
+	    	  if(cored == JOptionPane.NO_OPTION){
+	    		  wattHours = wattHours + 64;
+	    	  }
+	    	  if(cored == JOptionPane.YES_OPTION){
+	    		  wattHours = wattHours + 84;
+	    	  }
+	    	  if(cored ==JOptionPane.CANCEL_OPTION){
+	    		  wattHours = wattHours + 86;
+	    	  }
 	      }
+	      
 	      
 	    		  
 	      String branOfCPU = (String)(JOptionPane.showInputDialog(null, "What is your CPU brand?"));
@@ -215,4 +209,5 @@ public class Cost {
 		
 	}
 
+}
 }
