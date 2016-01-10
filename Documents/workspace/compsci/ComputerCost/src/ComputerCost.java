@@ -193,7 +193,8 @@ public class Cost
 		Object[] brands = { "AMD", "Intel" };
 		Object[] intel = { "Core i7", "Core i5", "Core i3" };
 		Object[] amd = { "High End(8 cores)", "Mid End(4 Cores)", "Low End(2 Cores)" };
-		int brandOfCPU = JOptionPane.showOptionDialog(null // Center in window.
+		int brandOfCPU = JOptionPane.showOptionDialog(
+				null // Center in window.
 				, "What is the brand of your CPU?" // Message
 				, "" // Title in titlebar
 				, JOptionPane.YES_NO_OPTION // Option type
@@ -225,7 +226,8 @@ public class Cost
 			{
 				wattHours = wattHours + 110;
 			}
-			if (brandOfCPU == JOptionPane.NO_OPTION)
+		}
+		if (brandOfCPU == JOptionPane.NO_OPTION)
 			{
 				int cored = JOptionPane.showOptionDialog(null // Center in
 															  // window.
@@ -249,7 +251,7 @@ public class Cost
 				{
 					wattHours = wattHours + 86;
 				}
-
+			}
 				Object[] ramType = { "n DDR3 RAM", "n DDR2", "n DDR1 RAM" };
 
 				int whichRAM = JOptionPane.showOptionDialog(null // Center in
@@ -356,7 +358,8 @@ public class Cost
 						Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
 						wattHours = wattHours + cardRate;
 					}
-					if (whichDraw == JOptionPane.NO_OPTION)
+					
+				if (whichDraw == JOptionPane.NO_OPTION)
 					{
 						int whichIdle = JOptionPane.showOptionDialog(null // Center
 																		  // in
@@ -388,7 +391,7 @@ public class Cost
 							wattHours = wattHours + cardRate;
 						}
 					}
-
+				}
 					Double elecCost = (totalHours * (wattHours)) / 1000 * (elecRate);
 
 					JOptionPane.showMessageDialog(null, "Computer Cost:" + computerPrice);
@@ -399,9 +402,8 @@ public class Cost
 
 					JOptionPane.showMessageDialog(null, "Total Cost:" + totalCost);
 
-				}
-			}
+				
+			
 
-		}
-	}
-}
+				}
+				}
