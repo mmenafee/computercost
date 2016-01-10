@@ -131,14 +131,17 @@ public class electricityUse {
 		else JOptionPane.showMessageDialog(null, "Cannot compute Power Usage");
 					
 		Double typeOfCPU = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter which CPU you have: \n Core i3 \n Core i5 \n Core i7 \n Core i7-E \n AMD Low End CPU 2 cores \n AMD Mid End CPU 4 cores \n AMD High End CPU 8 cores \n"));
+		Double cpuRate = ((Double) cpuDictionary.get(typeOfCPU)).doubleValue();
 		Double sizeOfRAM = Double.parseDouble(JOptionPane.showInputDialog(null, "Choose your RAM: \n DDR1 RAM \n DDR2 RAM  \n DDR3 RAM"));
+		Double ramRate = ((Double) ramDictionary.get(sizeOfRAM)).doubleValue();
 		String typeOfFan = JOptionPane.showInputDialog(null, "Choose your fan: \n 80 mm Case Fan (2,000 RPM) \n 80 mm Case Fan (3,000 RPM) \n 120 mm Case Fan (1,200 RPM) \n 120 mm Case Fan (2,000 RPM) \n 140 mm Case Fan (1,000 RPM) \n 140 mm Case Fan (2,000 RPM) \n");
+		Double fanRate = ((Double) fanDictionary.get(typeOfFan)).doubleValue();
 		String dvdPlayer = JOptionPane.showInputDialog(null, "Choose your DVD player: \n SATA DVD Drive \n SATA Blu-ray Drive \n");
-		
+		Double dvdRate = ((Double) dvdplayerDictionary.get(dvdPlayer)).doubleValue();
 		
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
 		
-		Double electricityCost = timeSpentonComputer * (typeOfCPU + sizeOfRAM + Double.parseDouble(typeOfFan) + Double.parseDouble(dvdPlayer));
+		Double electricityCost = timeSpentonComputer * (cpuRate + ramRate + fanRate + dvdRate);
 		
 		JOptionPane.showMessageDialog(null, "Total Computer Cost: " + computerPrice + "\n Total Electricity Cost: ");
 		
