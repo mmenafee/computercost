@@ -28,15 +28,14 @@ public class ComputerCost
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-public class electricityUse {
+public class Cost {
 
 	public static void main(String[] args) {
 	
 		//System.out.println("How many hours do you use your computer per day?");
 		//System.out.println("Screen Size?");
 		//int screenSize;
-		//System.out.println("Type of CPU?");
-		//int typeOfCPU;
+		
 		//System.out.println("Size of RAM?");
 		//int sizeOfRAM;
 		//System.out.println("Type of Fan?");
@@ -117,8 +116,51 @@ public class electricityUse {
 	      hm.put("42" , new Double(80.0));
 	      hm.put("50" , new Double(100.0));
 	      
-
+	      Object[] brands = {"Intel","AMD"};
+	      Object[] intel =  {"Core i3","Core i5","Core i7"};
+	      int brandOfCPU =JOptionPane.showOptionDialog(
+	               null                       // Center in window.
+                  , "What is the brand of your CPU?"        // Message
+                  , ""               // Title in titlebar
+                  , JOptionPane.YES_NO_OPTION  // Option type
+                  , JOptionPane.PLAIN_MESSAGE  // messageType
+                  , null                       // Icon (none)
+                  , brands                  // Button text as above.
+                  , "Cancel"    // Default button's label
+                );
+	      if(brandOfCPU == JOptionPane.YES_OPTION){
+	    	  int cores =JOptionPane.showOptionDialog(
+		               null                       // Center in window.
+	                  , "Which model of Intel CPU do you have?"        // Message
+	                  , ""               // Title in titlebar
+	                  , JOptionPane.YES_NO_OPTION  // Option type
+	                  , JOptionPane.PLAIN_MESSAGE  // messageType
+	                  , null                       // Icon (none)
+	                  , intel                  // Button text as above.
+	                  , "Cancel"    // Default button's label
+	                  );
+	    	}
+	      if(brandOfCPU == JOptionPane.NO_OPTION){
+	    	  int cores =JOptionPane.showOptionDialog(
+		               null                       // Center in window.
+	                  , "Which model of Intel CPU do you have?"        // Message
+	                  , ""               // Title in titlebar
+	                  , JOptionPane.YES_NO_OPTION  // Option type
+	                  , JOptionPane.PLAIN_MESSAGE  // messageType
+	                  , null                       // Icon (none)
+	                  , intel                  // Button text as above.
+	                  , "Cancel"    // Default button's label
+	                  );
+	      }
 	      
+	    		  
+	      String branOfCPU = (String)(JOptionPane.showInputDialog(null, "What is your CPU brand?"));
+	    	if(branOfCPU == "Intel"){
+	    		
+	    	}
+			
+		String typeOfFan = JOptionPane.showInputDialog(null, "What type of fan do you have? ");
+		String dvdPlayer = JOptionPane.showInputDialog(null, "What type of DVD player do you have? ");  
 		int computerPrice = Integer.parseInt(JOptionPane.showInputDialog( null, "What is your computer Price: " ));
 		JOptionPane.showMessageDialog(null, "Your computer Price is: " + computerPrice);
 		
@@ -157,8 +199,7 @@ public class electricityUse {
 		
 		int typeOfCPU = Integer.parseInt(JOptionPane.showInputDialog(null, "What type of CPU do you have? "));
 		int sizeOfRAM = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your RAM"));
-		String typeOfFan = JOptionPane.showInputDialog(null, "What type of fan do you have? ");
-		String dvdPlayer = JOptionPane.showInputDialog(null, "What type of DVD player do you have? ");
+
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
 		int volts = 0;
 		int amps = 0;
