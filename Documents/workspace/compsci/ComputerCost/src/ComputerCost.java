@@ -1,6 +1,4 @@
 import java.util.HashMap;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 public class Cost {
 
 	public static void main(String[] args) {
@@ -19,6 +17,7 @@ public class Cost {
 		
 		Double electricityCost;
 		double wattHours = 0;
+		double battCost = 0;
 		int totalHours = 0;
 		
 		 HashMap hm = new HashMap();
@@ -75,33 +74,10 @@ public class Cost {
 	      hm.put("New York", new Double(18.1));
 	      hm.put("Hawaii", new Double(33.2));
 	      
-	      
-	      hm.put("15" , new Double(15.0));
-	      hm.put("17" , new Double(18.0));
-	      hm.put("19" , new Double(20.0));
-	      hm.put("20" , new Double(24.0));
-	      hm.put("21" , new Double(26.0));
-	      hm.put("22" , new Double(30.0));
-	      hm.put("24" , new Double(40.0));
-	      hm.put("30" , new Double(50.0));
-	      hm.put("32" , new Double(55.0));
-	      hm.put("37" , new Double(60.0));
-	      hm.put("42" , new Double(80.0));
-	      hm.put("50" , new Double(100.0));
-	      
 		     HashMap screensizeDictionary = new HashMap();
 		      screensizeDictionary.put("17" , new Double(18.0));
 		      screensizeDictionary.put("30" , new Double(40.0));
 		      screensizeDictionary.put("50" , new Double(80.0));
-		      
-		      HashMap cpuDictionary = new HashMap();
-		      cpuDictionary.put("Core i3" , new Double(64.0));
-		      cpuDictionary.put("Core i5" , new Double(79.0));
-		      cpuDictionary.put("Core i7" , new Double(86.0));
-		      cpuDictionary.put("Core i7-E" , new Double(140.0));
-		      cpuDictionary.put("AMD Low End CPU 2 cores" , new Double(80.0));
-		      cpuDictionary.put("AMD Mid End CPU 4 cores" , new Double(95.0));
-		      cpuDictionary.put("AMD High End CPU 8 cores" , new Double(110.0));
 		      
 		      HashMap ramDictionary = new HashMap();
 		      ramDictionary.put("DDR1 RAM" , new Double(4.75));
@@ -114,7 +90,6 @@ public class Cost {
 		      dvdplayerDictionary.put("SATA DVD Drive", new Double(21.0));
 		      dvdplayerDictionary.put("SATA Blu-ray Drive", new Double(27.5));
 		      
-		      HashMap batteryDictionary = new HashMap();
 		      
 		      HashMap videocardDictionary = new HashMap();
 		      videocardDictionary.put("LPD Low", new Double(55.5));
@@ -145,22 +120,32 @@ public class Cost {
 			JOptionPane.showMessageDialog(null, "Your computer Price is: " + computerPrice);
 			
 			Object[] deskLap = { "Desktop","Laptop"};
-			int dl = JOptionPane.showOptionDialog( 
-		     null                       // Center in window.
-             ,  "Do you own a desktop or laptop?"        // Message
-             , ""               // Title in titlebar
-             , JOptionPane.YES_NO_OPTION  // Option type
-             , JOptionPane.PLAIN_MESSAGE  // messageType
-             , null                       // Icon (none)
-             , deskLap                  // Button text as above.
-             , "Cancel"    // Default button's label
-           );
-			 if(dl == JOptionPane.YES_OPTION){
-				 wattHours = wattHours + 1000;
-			 }
-			 if(dl == JOptionPane.NO_OPTION){
-				 wattHours = wattHours + 500;
-			 }
+				int dl = JOptionPane.showOptionDialog( 
+        		     null                       // Center in window.
+                     ,  "Do you own a desktop or laptop?"        // Message
+                     , ""               // Title in titlebar
+                     , JOptionPane.YES_NO_OPTION  // Option type
+                     , JOptionPane.PLAIN_MESSAGE  // messageType
+                     , null                       // Icon (none)
+                     , deskLap                  // Button text as above.
+                     , "Cancel"    // Default button's label
+                   );
+				 if(dl == JOptionPane.YES_OPTION){
+						wattHours = wattHours + (totalHours*100); // because it's desktop assuming they don't unplug it took the average of wattage of in use and not and multiplied by total time
+						battCost = 0;
+						 }
+					 
+					 if(dl == JOptionPane.NO_OPTION){
+						 if(hoursDay <=5){
+							 battCost= elecRate*((30*365* yearsKeepingComputer)/1000);// assuming that they recharge every day once and do that everyday
+						 }
+						if(hoursDay <=10){
+							battCost= elecRate*((60*365* yearsKeepingComputer)/1000);
+						}
+						if(hoursDay <=20){
+							battCost= elecRate*((120*365* yearsKeepingComputer)/1000);
+						}
+						 }
 		   Object[] screens = {"<= 50 inches","<= 30 inches"," <= 17 inches" };
 		   int whichScreen =JOptionPane.showOptionDialog(
 	               null                       // Center in window.
@@ -172,6 +157,7 @@ public class Cost {
                   , screens                  // Button text as above.
                   , "Cancel"    // Default button's label
                 );
+		   
 		   if (whichScreen == JOptionPane.YES_OPTION){
 			   String screennum= "50";
 	      		Double screenSize = ((Double) screensizeDictionary.get(screennum)).doubleValue(); 
@@ -369,17 +355,22 @@ public class Cost {
   	  }
     }
 	    
-   	Double elecCost = totalHours * (wattHours) * (elecRate);
-	JOptionPane.showMessageDialog(null, "Computer Cost:" + computerPrice);	
-   	JOptionPane.showMessageDialog(null, "Electricity Cost:" + elecCost);	
+   	Double elecCost = (totalHours * (wattHours))/1000 * (elecRate);
    	
-		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
-		int volts = 0;
-		int amps = 0;
+	JOptionPane.showMessageDialog(null, "Computer Cost:" + computerPrice);	
+   	JOptionPane.showMessageDialog(null, "Electricity Cost:" + elecCost);
+   	JOptionPane.showMessageDialog(null, "Battery Cost:" + battCost);
+   	
+   	Double totalCost = battCost + elecCost + computerPrice;
+   	
+   	JOptionPane.showMessageDialog(null, "Total Cost:" + totalCost);
+   	
+   	
+
+	 }
+    
 		
-		
-		int batteryCost = volts * amps;
-		
+
 		
 		//add all the watts used, then multiply that by state price per hour, then multiply that by the number of hours
 		//the user is planning to keep the computer
@@ -387,4 +378,4 @@ public class Cost {
 	}
 
 }
-}}
+}
