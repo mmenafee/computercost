@@ -5,10 +5,6 @@ public class Cost {
 
 	public static void main(String[] args) {
 	
-		//System.out.println("How many hours do you use your computer per day?");
-		//System.out.println("Screen Size?");
-		//int screenSize;
-		
 		//System.out.println("Size of RAM?");
 		//int sizeOfRAM;
 		//System.out.println("Type of Fan?");
@@ -21,7 +17,9 @@ public class Cost {
 		//int amps = 0;
 		//int batteryLength = volts * amps;
 		
+		Double electricityCost;
 		int wattHours = 0;
+		int totalHours = 0;
 		
 		 HashMap hm = new HashMap();
 	      // Put elements to the map
@@ -91,6 +89,50 @@ public class Cost {
 	      hm.put("42" , new Double(80.0));
 	      hm.put("50" , new Double(100.0));
 	      
+	      // 
+			String state = JOptionPane.showInputDialog(null, "What state do you live in?");
+			Double elecRate = ((Double) hm.get(state)).doubleValue();
+			
+			JOptionPane.showMessageDialog(null, "Your elecricity rate is: " + hm.get(state));
+		
+	      int hoursDay = Integer.parseInt(JOptionPane.showInputDialog(null,"How many hours do you use your computer per day?"));
+	      totalHours = hoursDay + totalHours;
+	      
+	      int yearsKeepingComputer = Integer.parseInt(JOptionPane.showInputDialog(null, "How many years do you plan to keep the computer? "));
+
+			if(yearsKeepingComputer < 20){
+				totalHours = hoursDay * 8760 * yearsKeepingComputer;
+				JOptionPane.showMessageDialog(null, "You are spending " + totalHours + "hours on your computer in total");
+			}
+			else System.out.println("Too much time on computer");
+	      
+	      int computerPrice = Integer.parseInt(JOptionPane.showInputDialog( null, "What was the price of your computer? " ));
+			JOptionPane.showMessageDialog(null, "Your computer Price is: " + computerPrice);
+			
+			Object[] deskLap = { "Desktop","Laptop"};
+			int dl = JOptionPane.showOptionDialog( 
+		     null                       // Center in window.
+             ,  "Do you own a desktop or laptop?"        // Message
+             , ""               // Title in titlebar
+             , JOptionPane.YES_NO_OPTION  // Option type
+             , JOptionPane.PLAIN_MESSAGE  // messageType
+             , null                       // Icon (none)
+             , deskLap                  // Button text as above.
+             , "Cancel"    // Default button's label
+           );
+			 if(dl == JOptionPane.YES_OPTION){
+				 wattHours = wattHours + 1000;
+			 }
+			 if(dl == JOptionPane.NO_OPTION){
+				 wattHours = wattHours + 500;
+			 }
+			 
+			 int screenSize = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your screen"));
+				
+				if (screenSize == 15){
+					JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of pwower");
+				}
+	      
 	      Object[] brands = {"AMD","Intel"};
 	      Object[] intel =  {"Core i7","Core i5","Core i3"};
 	      Object[] amd = { "High End(8 cores)", "Mid End(4 Cores)", "Low End(2 Cores)"};
@@ -147,51 +189,10 @@ public class Cost {
 	      }
 	      
 	      
-	    		  
-	      String branOfCPU = (String)(JOptionPane.showInputDialog(null, "What is your CPU brand?"));
-	    	if(branOfCPU == "Intel"){
-	    		
-	    	}
-			
+	    		  			
 		String typeOfFan = JOptionPane.showInputDialog(null, "What type of fan do you have? ");
 		String dvdPlayer = JOptionPane.showInputDialog(null, "What type of DVD player do you have? ");  
-		int computerPrice = Integer.parseInt(JOptionPane.showInputDialog( null, "What is your computer Price: " ));
-		JOptionPane.showMessageDialog(null, "Your computer Price is: " + computerPrice);
-		
-		//String dl = JOptionPane.showInputDialog(null, "Do you own a desktop or laptop?");
-		//JOptionPane.showMessageDialog(null);
-		//System.out.println("Desktop or Laptop?");
-		//String desktopOrLaptop;
-		//desktopOrLaptop = user_input.next();
-		
-		
-		String state = JOptionPane.showInputDialog(null, "What state do you live in?");
-			Double elecRate = ((Double) hm.get(state)).doubleValue();
-			
-			JOptionPane.showMessageDialog(null, "Your elecricity rate is: " + hm.get(state));
-		
-		
-		
-		int hoursPerDay = Integer.parseInt(JOptionPane.showInputDialog(null, "How many hours do you spend on your computer per day? "));
-		int yearsKeepingComputer = Integer.parseInt(JOptionPane.showInputDialog(null, "How many years do you plan to keep the computer? "));
-
-		if(yearsKeepingComputer < 31533600){
-			int timeSpentonComputer = hoursPerDay * 8760 * yearsKeepingComputer;
-			JOptionPane.showMessageDialog(null, "You are spending " + timeSpentonComputer + "hours on your computer in total");
-		}
-		else System.out.println("Too much time on computer");
-		
-		int screenSize = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your screen"));
-		
-		if (screenSize == 15){
-			JOptionPane.showMessageDialog(null, "Your screen uses " + screenSize + "watts of pwower");
-		}
-					
-		
-		
-		
-		
-		int typeOfCPU = Integer.parseInt(JOptionPane.showInputDialog(null, "What type of CPU do you have? "));
+	
 		int sizeOfRAM = Integer.parseInt(JOptionPane.showInputDialog(null, "What is the size of your RAM"));
 
 		int batteryType= Integer.parseInt(JOptionPane.showInputDialog(null, "What kind of battery do you have? "));
@@ -199,7 +200,7 @@ public class Cost {
 		int amps = 0;
 		
 		
-		Double electricityCost;
+		
 		
 		int batteryCost = volts * amps;
 		
