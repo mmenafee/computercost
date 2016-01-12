@@ -1,7 +1,15 @@
 import java.util.HashMap;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import java.awt.*;
+import javax.swing.*;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class ComputerCost
 {
+
+
 
 	public static void main(String[] args)
 	{
@@ -90,7 +98,7 @@ public class ComputerCost
 		String state = JOptionPane.showInputDialog(null, "What state do you live in?");
 		Double elecRate = ((Double) hm.get(state)).doubleValue();
 
-		JOptionPane.showMessageDialog(null, "Your elecricity rate is: " + hm.get(state));
+		JOptionPane.showMessageDialog(null, "Your elecricity rate in cents per kWh is: " + hm.get(state));
 
 		int hoursDay = Integer
 				.parseInt(JOptionPane.showInputDialog(null, "How many hours do you use your computer per day?"));
@@ -129,7 +137,7 @@ public class ComputerCost
 														// in use and not and
 														// multiplied by total
 														// time
-			battCost = 0;
+			battCost = 0; // no battery for desktop
 		}
 
 		if (dl == JOptionPane.NO_OPTION)
@@ -256,7 +264,7 @@ public class ComputerCost
 
 				int whichRAM = JOptionPane.showOptionDialog(null // Center in
 																 // window.
-				, "Which model of Intel CPU do you have?" // Message
+				, "Which RAM module do you have?" // Message
 						, "" // Title in titlebar
 						, JOptionPane.YES_NO_OPTION // Option type
 						, JOptionPane.PLAIN_MESSAGE // messageType
@@ -317,9 +325,9 @@ public class ComputerCost
 				Object[] draw = { "Load Power Draw", "Idle Power Draw" };
 				Object[] load = { "High End", "Mid End", "Low End" };
 				Object[] idle = { "High End", "Mid End", "Low End" };
-				int whichDraw = JOptionPane.showOptionDialog(null // Center in
-																  // window.
-				, "What type of power draw does your graphics card have?" // Message
+				int whichDraw = JOptionPane.showOptionDialog(
+						null // Center inwindow.
+						,"What type of power draw does your graphics card have?" // Message
 						, "" // Title in titlebar
 						, JOptionPane.YES_NO_OPTION // Option type
 						, JOptionPane.PLAIN_MESSAGE // messageType
@@ -327,12 +335,12 @@ public class ComputerCost
 						, draw // Button text as above.
 						, "Cancel" // Default button's label
 				);
-				if (whichDraw == JOptionPane.YES_OPTION)
+			if (whichDraw == JOptionPane.YES_OPTION)
 				{
 					int whichLoad = JOptionPane.showOptionDialog(null // Center
 																	  // in
 																	  // window.
-					, "Which model of AMD CPU do you have?" // Message
+					, "How good is you graphics card?(Most computers have Mid End)" // Message
 							, "" // Title in titlebar
 							, JOptionPane.YES_NO_OPTION // Option type
 							, JOptionPane.PLAIN_MESSAGE // messageType
@@ -358,13 +366,12 @@ public class ComputerCost
 						Double cardRate = ((Double) videocardDictionary.get(card)).doubleValue();
 						wattHours = wattHours + cardRate;
 					}
-					
-				if (whichDraw == JOptionPane.NO_OPTION)
+				}		
+		if (whichDraw == JOptionPane.NO_OPTION)
 					{
-						int whichIdle = JOptionPane.showOptionDialog(null // Center
-																		  // in
-																		  // window.
-						, "Which model of Intel CPU do you have?" // Message
+						int whichIdle = JOptionPane.showOptionDialog(
+								null // Center window.
+								, "How good is you graphics card?(Most computers have Mid End)" // Message
 								, "" // Title in titlebar
 								, JOptionPane.YES_NO_OPTION // Option type
 								, JOptionPane.PLAIN_MESSAGE // messageType
@@ -391,19 +398,15 @@ public class ComputerCost
 							wattHours = wattHours + cardRate;
 						}
 					}
-				}
-					Double elecCost = (totalHours * (wattHours)) / 1000 * (elecRate);
-
-					JOptionPane.showMessageDialog(null, "Computer Cost:" + computerPrice);
-					JOptionPane.showMessageDialog(null, "Electricity Cost:" + elecCost);
-					JOptionPane.showMessageDialog(null, "Battery Cost:" + battCost);
+					Double elecCost = ((totalHours * (wattHours)) / 1000) * (elecRate);
+				
+					
+					JOptionPane.showMessageDialog(null, "Computer Cost: $" + computerPrice);
+					JOptionPane.showMessageDialog(null, "( Multiply number by thousand) Electricity Cost: $" + elecCost);
+					JOptionPane.showMessageDialog(null, "Battery Cost: $" + battCost);
 
 					Double totalCost = battCost + elecCost + computerPrice;
 
-					JOptionPane.showMessageDialog(null, "Total Cost:" + totalCost);
-
-				
-			
-
-				}
-				}
+					JOptionPane.showMessageDialog(null, "( Multiply number by thousand) Total Cost: $" + totalCost);
+	}
+}
